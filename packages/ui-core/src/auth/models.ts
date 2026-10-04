@@ -1,9 +1,9 @@
 export interface AccountInfo {
-  id: string;
-  username: string;
-  firstName: string;
-  lastName: string;
-  roles: string[];
+  readonly id: string;
+  readonly username: string;
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly roles: readonly string[];
 }
 
 export interface SignInRequest {
