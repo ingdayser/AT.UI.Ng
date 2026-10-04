@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": ["node"],
+    "lib": ["ES2022", "DOM"],
+    "baseUrl": ".",
+    "paths": {
+      "@at/ui-core": ["../ui-core/src/index.ts"],
+      "@at/ui-http": ["../ui-http/src/index.ts"]
+    }
+  },
+  "include": ["src"]
+}

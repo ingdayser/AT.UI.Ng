@@ -1,0 +1,24 @@
+{
+  "name": "@at/ui-auth",
+  "version": "0.1.0",
+  "description": "Session for Angular apps of Apoyos Tecnologicos: AuthStore with a pluggable token storage, bearer + refresh interceptor and route guards.",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" } },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": { "@at/ui-core": "^0.1.0", "@at/ui-http": "^0.1.0" },
+  "peerDependencies": {
+    "@angular/common": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/router": "^22.0.0",
+    "@ngrx/signals": "^22.0.0",
+    "rxjs": "^7.8.0"
+  }
+}
