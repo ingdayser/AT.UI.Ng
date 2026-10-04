@@ -44,6 +44,21 @@ npm install
 npm run typecheck && npm run lint && npm test && npm run build
 ```
 
+## Publicación (Azure Artifacts)
+
+Feed de la organización: `https://pkgs.dev.azure.com/ApoyosTecnologicos/_packaging/ApoyosTecnologicos/npm/registry/`.
+El `.npmrc` del repo manda el scope `@at` al feed, sin credenciales: cada desarrollador pone su PAT (permiso
+*Packaging: Read & write* para publicar, *Read* para consumir) en el `~/.npmrc` de su usuario.
+
+```sh
+npm ci && npm run build && npm test
+npm version patch -w @at/ui-core -w @at/ui-http -w @at/ui-auth   # sube las versiones
+npm publish -w @at/ui-core -w @at/ui-http -w @at/ui-auth          # a mano, o con un tag `v*` en el pipeline
+```
+
+El pipeline (`azure-pipelines.yml`) compila y prueba en cada PR y publica al empujar un tag `v*`. Cada versión se
+publica una sola vez. La identidad *Project Collection Build Service* necesita rol *Contributor* en el feed.
+
 ## Pendiente
 
-- Registro npm donde se publica y su alcance (`@at`): por confirmar. Mientras tanto se puede consumir con `file:` o `npm link`.
+- Verificar la URL del feed en *Artifacts → Connect to feed → npm* y conectar el pipeline a este repo de GitHub.

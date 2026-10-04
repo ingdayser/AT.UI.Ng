@@ -6,19 +6,38 @@
   "sideEffects": false,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": { ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" } },
-  "files": ["dist"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run"
   },
-  "dependencies": { "@at/ui-core": "^0.1.0", "@at/ui-http": "^0.1.0" },
+  "dependencies": {
+    "@at/ui-core": "^0.1.0",
+    "@at/ui-http": "^0.1.0"
+  },
   "peerDependencies": {
     "@angular/common": "^22.0.0",
     "@angular/core": "^22.0.0",
     "@angular/router": "^22.0.0",
     "@ngrx/signals": "^22.0.0",
     "rxjs": "^7.8.0"
+  },
+  "publishConfig": {
+    "registry": "https://pkgs.dev.azure.com/ApoyosTecnologicos/_packaging/ApoyosTecnologicos/npm/registry/",
+    "access": "restricted"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ingdayser/AT.UI.Ng.git",
+    "directory": "packages/ui-auth"
   }
 }

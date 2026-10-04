@@ -1,0 +1,26 @@
+# Builds on every push to main and on pull requests; publishes to the Azure Artifacts feed when a
+# `v*` tag is pushed. Bump the versions first (npm version ... -w <package>) and push the tag.
+trigger:
+  branches: { include: [main] }
+  tags: { include: ['v*'] }
+pr: [main]
+
+pool: { vmImage: ubuntu-latest }
+
+steps:
+  - task: NodeTool@0
+    inputs: { versionSpec: '22.x' }
+
+  - task: npmAuthenticate@0
+    displayName: Authenticate to the feed
+    inputs: { workingFile: .npmrc }
+
+  - script: npm ci
+    displayName: Install
+
+  - script: npm run typecheck && npm run lint && npm test && npm run build
+    displayName: Typecheck, lint, test and build
+
+  - script: npm publish -w @at/ui-core -w @at/ui-http -w @at/ui-auth
+    displayName: Publish to Azure Artifacts
+    condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'))
