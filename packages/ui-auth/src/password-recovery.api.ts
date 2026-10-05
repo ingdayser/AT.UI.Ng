@@ -16,6 +16,9 @@ import { AUTH_CONFIG } from './config.ts';
  * 3. `resetPassword(email, token, newPassword)` sets the new password. `resendOtp` asks for another code.
  *
  * Create it inside an injection context, or use `inject(PASSWORD_RECOVERY_API)`.
+ *
+ * TODO(contract): `Auth v1.json` describes the four requests but answers each with a bare "200 OK", so the
+ * `resetSessionToken` of `verify-otp` is what the web SPA reads, not something the contract states.
  */
 export class PasswordRecoveryApi extends BaseHttpService {
   protected readonly baseUrl: string;
