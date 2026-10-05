@@ -1,6 +1,6 @@
 {
   "name": "@at/ui-auth",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Session for Angular apps of Apoyos Tecnologicos: AuthStore with a pluggable token storage, bearer + refresh interceptor and route guards.",
   "type": "module",
   "sideEffects": false,

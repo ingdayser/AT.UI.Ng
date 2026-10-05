@@ -5,3 +5,4 @@ export * from './config.ts';
 export * from './guards.ts';
 export * from './models.ts';
 export * from './return-url.ts';
+export * from './password-recovery.api.ts';

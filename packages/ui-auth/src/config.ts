@@ -29,7 +29,14 @@ export interface AuthConfig {
 
 export const AUTH_CONFIG = new InjectionToken<AuthConfig>('AUTH_CONFIG');
 
-export const DEFAULT_PUBLIC_PATHS = ['/member/signin', '/member/refresh', '/member/forgot-password'] as const;
+export const DEFAULT_PUBLIC_PATHS = [
+  '/member/signin',
+  '/member/refresh',
+  '/member/forgot-password',
+  '/member/resend-otp',
+  '/member/verify-otp',
+  '/member/reset-password-otp',
+] as const;
 
 export interface ResolvedAuthConfig {
   readonly memberApiUrl: string;
